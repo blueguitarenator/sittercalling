@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sitter Calling | <%= @title %></title>
+    <title><%= title %></title>
     <%= csrf_meta_tag %>
+    <%= stylesheet_link_tag 'stylesheet' %>
   </head>
   <body>
-    <%= yield %>
+    <%= notice %>
+    <div class="split">
+      <div class="container">
+		  
+        <div class="top">
+          <div class="limiter">
+            <div class="floatL">
+              <a href="#"><img alt="Sitter Calling" src="/images/logo_home.png" /></a>
+			</div>
+			
+            <div class="floatR">
+	
+			</div>
+			
+	      </div>
+	    </div>
+			
+		
+		
+		
+
+		  <%= yield %>
+		  
+	    </div>
+	  </div>
   </body>
 </html>
