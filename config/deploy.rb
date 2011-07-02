@@ -20,8 +20,6 @@ role :db,  "jason.asmallorange.com", :primary => true # This is where Rails migr
 
 # If you are using Passenger mod_rails uncomment this:
 
-after "deploy", "deploy:bundle_gems"
-after "deploy:bundle_gems", "deploy:restart"
 
 namespace :deploy do
   task :start do ; end
