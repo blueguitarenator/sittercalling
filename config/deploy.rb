@@ -24,9 +24,6 @@ after "deploy", "deploy:bundle_gems"
 after "deploy:bundle_gems", "deploy:restart"
 
 namespace :deploy do
-  task :bundle_gems do
-    run "cd #{deploy_to}/current && bundle install vendor/gems"
-  end
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
