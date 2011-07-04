@@ -1,9 +1,20 @@
 Sittercalling::Application.routes.draw do
+  resources :users
+  
+  match '/signup', :to => 'users#new'
+
   get "pages/home"
 
   get "pages/contact"
 
   get "pages/about"
+  
+  match 'login', :to => 'user_sessions#new', :as => "login", :conditions => {:method => :get}
+
+  match 'login', :to => 'user_sessions#create', :as => "login", :conditions => {:method => :post}
+  
+  match 'logout', :to => 'user_sessions#destroy', :as => "logout"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,35 @@
+<table>
+  <tbody>
+    <tr>
+      <td><%= form.label :first_name %></td>
+    </tr>
+    <tr>
+      <td><%= form.text_field :first_name, :class => "wide" %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :last_name %></td>
+    </tr>
+    <tr>
+      <td><%= form.text_field :last_name, :class => "wide" %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :email %></td>
+    </tr>
+    <tr>
+      <td><%= form.text_field :email, :class => "wide" %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :password, form.object.new_record? ? nil : "Change password" %></td>
+    </tr>
+    <tr>
+      <td><%= form.text_field :password, :class => "wide" %></td>
+    </tr>
+    <tr>
+      <td><%= form.label :password_confirmation %></td>
+    </tr>
+    <tr>
+      <td><%= form.text_field :password_confirmation, :class => "wide" %></td>
+    </tr>
+  </tbody>
+</table>
+
