@@ -7,7 +7,6 @@ gem 'rails', '3.0.9'
 
 # gem 'sqlite3'
 gem 'mysql2', '0.2.6'
-
 gem 'authlogic'
 
 # Use unicorn as the web server
