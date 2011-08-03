@@ -1,6 +1,8 @@
 Sittercalling::Application.routes.draw do
   resources :users
   
+  root :to => 'user_sessions#new'
+  
   match '/signup', :to => 'users#new'
 
   get "pages/home"
