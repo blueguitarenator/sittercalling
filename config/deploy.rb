@@ -1,10 +1,10 @@
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-require 'rvm/capistrano'
+# $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+# require 'rvm/capistrano'
 require 'bundler/capistrano'
 set :application, "sittercalling"
 set :repository,  "git@github.com:blueguitarenator/sittercalling.git"
-set :rvm_ruby_string, '1.9.2@sittercalling'
-set :rvm_type, :user
+# set :rvm_ruby_string, '1.9.2@sittercalling'
+# set :rvm_type, :user
 set :scm, :git
 
 set :scm_username, 'mybabysi'
