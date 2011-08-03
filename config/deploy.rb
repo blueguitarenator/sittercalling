@@ -38,3 +38,5 @@ end
 task :overwrite_database_yml_file do
   run "[ -f /home/sitter_cap/#{application}/database.yml ] && cp -f /home/sitter_cap/#{application}/database.yml #{latest_release}/config/ || echo 'database.yml was not overwritten'"
 end
+
+after "deploy:update_code", :overwrite_database_yml_file
