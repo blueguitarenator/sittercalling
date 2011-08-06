@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                           :after_add => :create_reverse_association,
                           :after_remove => :remove_reverse_association
   
-  #attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
