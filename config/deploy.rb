@@ -15,9 +15,9 @@ set :deploy_to, "/home/sitter_cap/#{application}"
 set :deploy_via, :remote_cache
 
 
-role :web, "ps58065.dreamhost.com"                          # Your HTTP server, Apache/etc
-role :app, "ps58065.dreamhost.com"                          # This may be the same as your `Web` server
-role :db,  "ps58065.dreamhost.com", :primary => true # This is where Rails migrations will run
+role :web, "sittercalling.com"                          # Your HTTP server, Apache/etc
+role :app, "sittercalling.com"                          # This may be the same as your `Web` server
+role :db,  "sittercalling.com", :primary => true # This is where Rails migrations will run
 
 set :bundle_dir, ''
 set :bundle_flags, ''

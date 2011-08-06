@@ -1,5 +1,6 @@
 Sittercalling::Application.routes.draw do
-  resources :users
+  resources :users, :except => [:index]
+  resources :user_sessions
   
   root :to => 'user_sessions#new'
   
@@ -11,10 +12,8 @@ Sittercalling::Application.routes.draw do
 
   get "pages/about"
   
-  match 'login', :to => 'user_sessions#new', :as => "login", :conditions => {:method => :get}
+  match 'login', :to => 'user_sessions#new', :as => "login"
 
-  match 'login', :to => 'user_sessions#create', :as => "login", :conditions => {:method => :post}
-  
   match 'logout', :to => 'user_sessions#destroy', :as => "logout"
   
   # The priority is based upon order of creation:

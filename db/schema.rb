@@ -10,17 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110704013850) do
-
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
-    t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+ActiveRecord::Schema.define(:version => 20110704014921) do
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                         :null => false
@@ -39,6 +29,9 @@ ActiveRecord::Schema.define(:version => 20110704013850) do
     t.string   "current_login_ip"
     t.string   "last_login_ip"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
 
   create_table "users_friends", :id => false, :force => true do |t|
     t.integer  "user_id"

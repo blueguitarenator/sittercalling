@@ -1,6 +1,5 @@
 class AddAuthlogicToUser < ActiveRecord::Migration
   def self.up
-    drop_table :users
     create_table :users do |t|
       t.string    :first_name,          :null => false
       t.string    :last_name,           :null => false
@@ -20,12 +19,13 @@ class AddAuthlogicToUser < ActiveRecord::Migration
       t.string    :current_login_ip                                   # optional, see Authlogic::Session::MagicColumns
       t.string    :last_login_ip                                      # optional, see Authlogic::Session::MagicColumns
     end
+    
+    add_index :users, ["email"], :name => "index_users_on_email", :unique => true
+    add_index :users, ["persistence_token"], :name => "index_users_on_persistence_token", :unique => true
   end
 
+  
   def self.down
     drop_table :users
-    create_table :users do |t|
-      t.timestamps
-    end
   end
 end
