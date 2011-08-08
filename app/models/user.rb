@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                           :after_add => :create_reverse_association,
                           :after_remove => :remove_reverse_association
   
-  #attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
+  #attr_accessible :first_name, :last_name, :email
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
@@ -51,13 +51,3 @@ end
 #  current_login_ip    :string(255)
 #  last_login_ip       :string(255)
 #
-
-# class UserSession < Authlogic::Session::Base
-  # authenticate_with User
-#   
-  # # 'Model_name' error fix info
-  # # http://groups.google.com/group/mongomapper/browse_thread/thread/2a247f17a5d06dda
-  # def model_name 
-       # @_model_name ||= ActiveModel::Name.new(self) 
-  # end
-# end
