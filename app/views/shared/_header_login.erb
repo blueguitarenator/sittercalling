@@ -4,7 +4,8 @@
       <a href="#"><img alt="Sitter Calling" src="/images/logo_home.png" /></a>
     </div>
     <div class="floatR">
-      <%= form_for (@user_session or UserSession.new), :login do |f| %>
+      <% session_for_form = (@user_session or UserSession.new) %>
+      <%= form_for session_for_form, :login do |f| %>
         <table>
           <tbody>
             <tr>
