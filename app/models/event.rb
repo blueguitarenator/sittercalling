@@ -9,20 +9,17 @@ class Event < ActiveRecord::Base
     # :conditions => ["eventDate >= ?", date]}}
   
    scope :historic, lambda {
-     |date| where (["event_date < ?", date]) 
+     where (["event_date < ?", Time.zone.now]) 
    }
    
-   scope :desc, lambda {
-     where ("event_date DESC")
-   }
+   scope :historic_sorted, historic.order("event_date desc")  
    
-   scope :asc, lambda {
-     where ("event_date ASC")
-   }
-   
+    
   scope :upcoming, lambda {
-    |date| where (["event_date >= ?", date])
+    where (["event_date >= ?", Time.zone.now])
   }
+  
+  scope :upcoming_sorted, upcoming.order("event_date asc")  
   
   belongs_to :user
   has_many :replies, :dependent => :destroy

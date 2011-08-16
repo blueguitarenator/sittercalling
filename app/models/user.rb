@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
                           :after_remove => :remove_reverse_association
   
   #attr_accessible :first_name, :last_name, :email
-  
+  has_many :events, :dependent => :destroy
+  has_many :replies, :dependent => :destroy
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :first_name, :last_name,  :presence => true,
