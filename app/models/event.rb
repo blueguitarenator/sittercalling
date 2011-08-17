@@ -1,24 +1,13 @@
-class Event < ActiveRecord::Base
-  # named_scope :historic, lambda {|date| {
-    # :order => 'eventDate DESC', 
-    # :conditions => ["eventDate < ?", date]}}
-      
-      
-  # named_scope :upcoming, lambda {|date| {
-    # :order => 'eventDate ASC', 
-    # :conditions => ["eventDate >= ?", date]}}
-  
-   scope :historic, lambda {
-     where (["event_date < ?", Time.zone.now]) 
-   }
-   
-   scope :historic_sorted, historic.order("event_date desc")  
-   
+class Event < ActiveRecord::Base  
+  scope :historic, lambda {
+    where (["event_date < ?", Time.zone.now]) 
+  }
     
   scope :upcoming, lambda {
     where (["event_date >= ?", Time.zone.now])
   }
   
+  scope :historic_sorted, historic.order("event_date desc")  
   scope :upcoming_sorted, upcoming.order("event_date asc")  
   
   belongs_to :user
