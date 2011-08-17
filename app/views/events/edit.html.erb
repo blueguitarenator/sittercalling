@@ -1,0 +1,92 @@
+<div class="middle">
+  <div class="limiter">
+    <div class="box first double">
+	  <div class="eventDetails">
+      <strong> Edit Event </strong>
+      <% form_for @event, :html => {:class => "create"}  do |f| %>
+        
+		<table>
+		  <tbody>
+		    <tr>
+		      <td><%= f.label :name %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.text_field :name, :class => "wide" %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.label :eventDate %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.text_field :eventDate, :class => "wide" %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.label :startTime %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.text_field :startTime, :class => "wide" %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.label :endTime %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.text_field :endTime, :class => "wide" %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.label :note %></td>
+		    </tr>
+		    <tr>
+		      <td><%= f.text_field :note, :class => "wide" %></td>
+		    </tr>
+		  </tbody>
+		</table>
+		  <p>
+		    <%= f.submit 'Update' %>
+		  </p>
+		
+      <% end %>
+      <br/>
+
+	      <CAPTION><EM>Reply Status For This Event</EM></CAPTION>
+          <table id="sample" cellspacing="2">
+            <tr class="toprow">
+            <th>Answer</th>
+            <th>Name</th>
+            <th>Note</th>
+            </tr>
+
+            <% @event.replies.each do |reply| %>
+              <tr>
+              <td class="data" width="20%"><%=h reply.answer %></td>
+              <td class="data" width="30%"><%=h reply.user.first_name %> <%=h reply.user.last_name %></td>
+              <td class="data" width="50%"><%=h reply.note %></td>
+              </tr>
+            <% end %>
+          </table>
+          <br/>
+	    <%= link_to 'Show', @event %> |
+	    <%= link_to 'Back', user_url(current_user) %>
+
+        </div>
+      </div>
+
+      <div class="box secondary">
+        <h3 id="yourNetwork"><span class="alt">Add From My Babysitters</span></h3>
+        <ul>
+        <% @user.friends.each do |friend| %>
+          <li><%=h friend.first_name %> <%=h friend.last_name %> <%= link_to 'Add To Event', event_replies_path(@event, :id => friend.id), :method => :post %></li>
+        <% end %>
+        <li></li>
+        <p>Add a sitter to this event. <br>
+		As soon as the sitter is added to the event an email is sent to that sitter. You will get an email when the sitter replies.
+		</p>
+
+      </ul>
+      </div>
+
+	  <div class="clear"></div>
+      </div>
+
+	<div class="gradient"></div>
+
+</div>
+

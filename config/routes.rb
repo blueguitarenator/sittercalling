@@ -1,6 +1,7 @@
 Sittercalling::Application.routes.draw do
   resources :users, :except => [:index]
   resources :user_sessions
+  resources :events, :except => [:index, :delete]
   
   root :to => 'user_sessions#new'
   
