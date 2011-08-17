@@ -61,26 +61,78 @@ describe EventsController do
       end
     end
   end
+
+  # EDIT
+  describe "GET events/:id/edit" do
+    
+    describe "with valid params" do
   
+      before(:each) do
+        @rich = Factory.build(:rich)
+        controller.stub(:current_user).and_return{@rich}
+        @event = mock_model(Event, :update_attributes => true)
+        @events = mock_model(Event);
+        @rich.stub!(:events).and_return(@event)
+        Event.stub!(:find).with("1").and_return(@event)
+      end      
+      
+      it "should find event and return object" do
+        @rich.events.should_receive(:find).with("1").and_return(@event)
+        get :edit, :id => "1", :event => {}
+      end
+      
+      it "should render the event's edit page" do
+        @rich.events.should_receive(:find).with("1").and_return(@event)
+        get :edit, :id => "1", :event => {}
+        response.should render_template('edit')
+      end
+    end      
+  end
+  
+  # NEW
   describe "GET events/new" do
-    
-    
-    
+   describe "with valid params" do
+  
+      before(:each) do
+        @event = mock_model(Event)
+      end      
+      
+      it "should create new event" do
+        Event.should_receive(:new)
+        get :new, :event => {}
+      end
+      
+      it "should render the event new page" do
+        get :new, :event => {}
+        response.should render_template('new')
+      end
+    end
   end
 
-  # context "get Show" do
-    # before do
-      # @rich = Factory.build(:rich)
-    # end
-#     
-    # def do_show
-      # get :show, id => @rich
-    # end
-#     
-    # it "should assign current user" do
-      # controller.stub(:current_user).and_return{@rich}
-      # do_show
-      # assigns[:user].email.should == @rich.email
-    # end
-  # end
+  # SHOW
+  context "get Show" do
+    before(:each) do
+      @rich = Factory.build(:rich)
+      controller.stub(:current_user).and_return{@rich}
+      # @event = mock_model(Event, :update_attributes => true)
+      # @events = mock_model(Event);
+      # @rich.stub!(:events).and_return(@event)
+      Event.stub!(:find).with("1").and_return(@event)
+    end      
+    
+    it "should set current user" do
+      assigns(:user).should == @rich
+      get :show, :id => "1", :event => {}
+    end
+    
+    it "should find event and return object" do
+      Event.should_receive(:find).with("1").and_return(@event)
+      get :show, :id => "1", :event => {}
+    end
+    
+    it "should render the event's show page" do
+      get :show, :id => "1", :event => {}
+      response.should render_template('show')
+    end
+  end      
 end
