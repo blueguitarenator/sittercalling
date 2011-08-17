@@ -108,9 +108,34 @@ describe EventsController do
       end
     end
   end
+  
+  # CREATE
+  describe "POST events/create" do
+    let (:evt) { mock_model(Event)}
+    let(:params) { {:event => evt} }
+    describe "with valid params" do
+      before(:each) do
+        @rich = Factory.build(:rich)
+        #@event = mock_model(Event)
+        controller.stub(:current_user).and_return{@rich}
+      end      
+      
+      it "should create new event" do
+        Event.should_receive(:new).with(evt).and_return{evt} 
+        post 'create', params
+        # @rich.events.count.should == 1
+      end
+      
+      it "should render the event new page" do
+        Event.should_receive(:new).with(evt).and_return{evt} 
+        post 'create', params
+        response.should redirect_to(event_url(evt))
+      end
+    end
+  end
 
   # SHOW
-  context "get Show" do
+  describe "get Show" do
     before(:each) do
       @rich = Factory.build(:rich)
       controller.stub(:current_user).and_return{@rich}
@@ -121,8 +146,8 @@ describe EventsController do
     end      
     
     it "should set current user" do
-      assigns(:user).should == @rich
       get :show, :id => "1", :event => {}
+      assigns(:user).should == @rich
     end
     
     it "should find event and return object" do
