@@ -1,0 +1,35 @@
+<div class="middle">
+  <div class="limiter">
+    <h3> Search Results</h3>
+
+    <% if @users.length > 0 %>
+      <%= @users.length %> users found
+
+      <table border="1" cellpadding="5">
+        <tr>
+        <th>First</th>
+        <th>Last</th>
+        <th>Email</th>
+        </tr>
+        <% @users.each do |r| %>
+          <tr>
+            <td><%= r.first_name %></td>
+            <td><%= r.last_name %></td>
+            <td><%= r.email %></td>
+            <td><%= link_to 'Add ', add_friend_path(r), :method => :put %></td>
+          </tr>
+        <% end %>
+      </table>
+
+      <br />
+      <br />
+	
+    <% else %>
+      No users were returned
+    <% end %>
+
+	<br /><%= link_to "My Profile", user_path(@user) %>
+
+  </div>
+</div>
+

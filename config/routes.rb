@@ -2,6 +2,8 @@ Sittercalling::Application.routes.draw do
   resources :users, :except => [:index]
   resources :user_sessions
   resources :events, :except => [:index, :delete]
+  resources :search_friend, :only => [:new, :index]
+  resources :add_friend, :only => [:update]
   
   root :to => 'user_sessions#new'
   
@@ -17,6 +19,7 @@ Sittercalling::Application.routes.draw do
 
   match 'logout', :to => 'user_sessions#destroy', :as => "logout"
   
+  resources :users, :has_many => [:events, :replies, :invitations]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
