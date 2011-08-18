@@ -1,18 +1,24 @@
 require 'spec_helper'
 
 describe Event do
-    before do
-      @event = Event.new
-    end
-    
-    it 'should be invalid without a user date start_time end_time user_id' do
-      @event.should_not be_valid
-      @event.event_date = Time.now
-      @event.start_time = "5am"
-      @event.end_time = "7am"
-      @event.user_id = 1
-      @event.should be_valid
-    end
+  it { should belong_to(:user) }
+  it { should have_many(:replies) }
+  # it { should validate_presence_of(:event_date) }
+  # it { should validate_presence_of(:start_time) }
+  # it { should validate_presence_of(:end_time) }
+
+  before do
+    @event = Event.new
+  end
+  
+  it 'should be invalid without a user date start_time end_time user_id' do
+    @event.should_not be_valid
+    @event.event_date = Time.now
+    @event.start_time = "5am"
+    @event.end_time = "7am"
+    @event.user_id = 1
+    @event.should be_valid
+  end
 end
 
 describe 'historic events' do
