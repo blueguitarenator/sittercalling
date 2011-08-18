@@ -1,0 +1,32 @@
+<div class="middle">
+  <div class="limiter">
+    <div class="box first double">
+
+  <p>
+    <b>Answer:</b>
+    <%=h @reply.answer %>
+  </p>
+
+  <p>
+    <b>Note:</b>
+    <%=h @reply.note %>
+  </p>
+
+  <% if @reply.user_id == @user.id %>
+    <%= link_to 'Edit', edit_event_reply_path(@reply.event, @reply) %>
+  <% end %>
+  |
+  <%= link_to 'Home', user_url(current_user) %>
+  </div>
+
+
+  <div class="box secondary">
+         <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
+         <p>Add your sitters to this event...</p>
+       </div>
+  
+        <div class="clear"></div>
+      </div>
+     </div>
+
+    <div class="gradient"></div>

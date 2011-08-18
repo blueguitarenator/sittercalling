@@ -1,0 +1,39 @@
+<div class="middle">
+  <div class="limiter">
+    <div class="box first double">
+      <div class="eventDetails">
+
+    <h2>Editing reply</h2>
+
+    <% form_for @reply, :url => event_reply_path do |f| %>
+
+      <div class="answer">
+        <%= f.radio_button :answer, 'Yes', :checked => true %> 
+        <%= f.label :answer_yes, 'YES' %>
+        <%= f.radio_button :answer, 'No' %>
+        <%= f.label :answer_no, 'NO' %>
+      </div>
+      <p>
+        <%= f.label :note %><br />
+        <%= f.text_field :note %>
+      </p>
+      <p>
+        <%= f.submit 'Update' %>
+      </p>
+    <% end %>
+
+    <%= link_to 'Show', event_reply_path(@reply.event, @reply) %> |
+    <%= link_to 'Home', user_url(current_user) %>
+
+      </div>
+
+    </div>
+  <div class="box secondary">
+      <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
+      <p>Add your sitters to this event...</p>
+     </div>
+
+   <div class="clear"></div>
+    </div>
+  </div>
+<div class="gradient"></div>
