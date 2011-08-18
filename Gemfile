@@ -37,4 +37,5 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'annotate'
+  gem 'shoulda-matchers'
 end
