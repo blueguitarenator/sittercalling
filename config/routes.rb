@@ -5,6 +5,7 @@ Sittercalling::Application.routes.draw do
   resources :search_friend, :only => [:new, :index]
   resources :add_friend, :only => [:update]
   resources :invitations, :except => [:update]
+  resources :histories, :only => [:index]
   
   root :to => 'user_sessions#new'
   
