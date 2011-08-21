@@ -3,8 +3,9 @@
   <head>
     <title><%= title %></title>
     <%= csrf_meta_tag %>
-    <%= stylesheet_link_tag 'stylesheet' %>
+    <%= stylesheet_link_tag :all %>
     <%= javascript_include_tag :all %>
+
   </head>
   <body
   <%= notice %>
@@ -12,7 +13,7 @@
   <div class="home">
       <div class="container">
 		  
-          <% if (current_user) %>
+      <% if (current_user) %>
 			<%= render("shared/header")%>
 		  <% else %>
 			<%= render("shared/header_login")%>
