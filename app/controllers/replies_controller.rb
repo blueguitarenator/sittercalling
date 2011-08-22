@@ -34,21 +34,18 @@ class RepliesController < ApplicationController
   # GET /events/1/reply.xml
   def create
     event = Event.find(params[:event_id])
-    friend = User.find(params[:id])
-    not_found = true
-    event.replies.each do |r|
-      if friend.email == r.user.email
-        not_found = false
-      end
-    end
-    if (not_found)
-      r = Reply.create(
-        :event_id => event.id,
-        :user_id => params[:id],
-        :answer => '<NONE>',
-        :note => ''
-        )
-      event.replies << r
+    friend = User.find(params[:user_id])
+    found = event.replies.any?{ |r| friend == r.user }
+    if (!found)
+      # r = Reply.create(
+        # :event => event,
+        # :user => friend,
+        # :answer => '<NONE>',
+        # :note => ''
+        # )
+      r = event.replies.create(:user => friend, :answer => '<NONE>', :note => '')
+      Rails.logger.info r.inspect
+      Rails.logger.info r.id
       BabysitMailer.deliver_event(event, r)
     end
     redirect_to user_url(current_user)

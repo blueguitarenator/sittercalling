@@ -73,7 +73,7 @@
         <h3 id="yourNetwork"><span class="alt">Add From My Babysitters</span></h3>
         <ul>
         <% @user.friends.each do |friend| %>
-          <li><%=h friend.first_name %> <%=h friend.last_name %> <%= link_to 'Add To Event', event_replies_path(@event, :id => friend.id), :method => :post %></li>
+          <li><%=h friend.first_name %> <%=h friend.last_name %> <%= link_to 'Add To Event', event_replies_path(@event, :user_id => friend.id), :method => :post %></li>
         <% end %>
         <li></li>
         <p>Add a sitter to this event. <br>
