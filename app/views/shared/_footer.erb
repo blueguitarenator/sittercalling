@@ -2,9 +2,7 @@
   <div class="limiter">
     <div class="footerNavigation">
       <ul>
-		<% if !current_user %>
-        	<li><%= link_to "login", :login %></li>
-		<% else %>
+		<% if current_user %>
 			<li><%= link_to "logout", :logout %></li>
 		<% end %>
         <li><%= link_to "register new account", new_user_path %></li>

@@ -7,7 +7,7 @@ Sittercalling::Application.routes.draw do
   resources :invitations, :except => [:update]
   resources :histories, :only => [:index]
   
-  root :to => 'user_sessions#new'
+  root :to => 'pages#home'
   
   match '/signup', :to => 'users#new'
 
