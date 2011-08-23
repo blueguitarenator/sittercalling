@@ -28,7 +28,7 @@
 	<% if current_user %>
 		<%= link_to 'Back', user_url(current_user) %>
 	<% else %>
-		<%= link_to 'Back', login_path %>
+		<%= link_to 'Back', :root %>
     <% end %>
 
     </div>

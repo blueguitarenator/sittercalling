@@ -5,7 +5,7 @@
 		<% if current_user %>
 			<li><%= link_to "logout", :logout %></li>
 		<% end %>
-        <li><%= link_to "register new account", new_user_path %></li>
+        <li><%= link_to "register new account", :signup %></li>
         <li><%= link_to "learn about us", :about %></li>
         <li><%= link_to "contact us", :contact %></li>
       </ul>

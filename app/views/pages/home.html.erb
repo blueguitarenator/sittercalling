@@ -1,11 +1,10 @@
 <div class="middle">
   <div class="limiter">
     <div class="box first">
-    <%= image_tag("home_signup.png", :alt => "sign up")%>
+    <%= link_to image_tag("home_signup.png", :alt => "sign up")%>
       <h3 id="createAccount"></h3>
       <p>Sign up is easy and takes just a moment. Just enter your name and contact information and you're on your way!</p>
-    <a id="registerNow" href="/users/new"></a>
-    <!-- <%= link_to "",  :html => {:id => "registerNow"}, :url => signup_path %> -->
+    <%= link_to '', :signup,  :id => "registerNow" %>
     </div>
     <div class="box">
     <%= image_tag("home_build.png", :alt => "sign up")%>
