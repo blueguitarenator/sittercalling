@@ -4,7 +4,7 @@
     <div class="box first double">
     <h3 id="createAccount"><span class="alt">Create an Account</span></h3>
   	
-	<%= form_for @user, :html => {:class => "create"}, :url => users_path do |f| %>
+	<%= form_for @user, :url => users_path do |f| %>
 	  
 	  <% if @user.errors.any? %>
 	    <div id="error_explanation">
