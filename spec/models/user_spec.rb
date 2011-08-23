@@ -61,13 +61,14 @@ describe User do
 end
 
 
+
 # == Schema Information
 #
 # Table name: users
 #
 #  id                  :integer(4)      not null, primary key
-#  first_name          :string(255)     not null
-#  last_name           :string(255)     not null
+#  first_name          :string(255)     default(""), not null
+#  last_name           :string(255)     default(""), not null
 #  email               :string(255)     not null
 #  crypted_password    :string(255)     not null
 #  password_salt       :string(255)     not null

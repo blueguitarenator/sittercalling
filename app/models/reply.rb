@@ -1,14 +1,18 @@
+
+# == Schema Information
+#
+# Table name: replies
+#
+#  id         :integer(4)      not null, primary key
+#  answer     :string(255)
+#  note       :string(255)
+#  event_id   :integer(4)      not null
+#  user_id    :integer(4)      not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Reply < ActiveRecord::Base
-  
-  # named_scope :historic, lambda { |date| { 
-                # :joins => :event, 
-                # :order => 'eventDate DESC', 
-                # :conditions => ['eventDate < ?', date]}}
-#                 
-  # named_scope :upcoming, lambda { |date| { 
-                # :joins => :event, 
-                # :order => 'eventDate ASC', 
-                # :conditions => ['eventDate >= ?', date]}}
              
   scope :historic, lambda {
     joins(:event).
