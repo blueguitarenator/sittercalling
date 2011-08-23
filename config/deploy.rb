@@ -13,7 +13,7 @@ set :use_sudo, false
 set :branch, "master"
 set :deploy_to, "/home/sitter_cap/#{application}"
 set :deploy_via, :remote_cache
-
+set :keep_releases, 5
 
 role :web, "sittercalling.com"                          # Your HTTP server, Apache/etc
 role :app, "sittercalling.com"                          # This may be the same as your `Web` server
@@ -40,3 +40,9 @@ task :overwrite_database_yml_file do
 end
 
 after "deploy:update_code", :overwrite_database_yml_file
+
+# if deployment fails because you need to install gems,
+# ssh as sitter_cap, go to the directory that was just deployed but failed
+# su sitter_root (don't use su -, you want to stay in the same directory)
+# run sudo bundle install --gemfile Gemfile --without development test
+# then deploy again and should be good to go
