@@ -20,10 +20,10 @@ class UserSessionsController < ApplicationController
     respond_to do |format|
       if @user_session.save
         @user = current_user
-        format.html { redirect_to(:login, :notice => 'Login Successful') }
+        format.html { redirect_to(:root, :notice => 'Login Successful') }
         format.xml  { render :xml => @user_session, :status => :created, :location => @user_session }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(:root, :notice => 'Login Unsuccessful') }#{ render :action => "new" }
         format.xml  { render :xml => @user_session.errors, :status => :unprocessable_entity }
       end
     end

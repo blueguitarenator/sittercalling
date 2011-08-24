@@ -10,7 +10,7 @@ Sittercalling::Application.routes.draw do
   root :to => 'pages#home'
   
   
-  match 'login', :to => 'user_sessions#new', :as => "login"
+#  match 'login', :to => 'user_sessions#new', :as => "login"
   match 'logout', :to => 'user_sessions#destroy', :as => "logout"
   match 'signup', :to => 'users#new', :as => "signup"
   match '/contact', :to => 'pages#contact'
