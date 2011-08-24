@@ -1,8 +1,14 @@
+<div class="box">
+  <h2>Pending invitation</h2>
+  <p>
+  This is a pending invitation. When the user registers you will automatically be connected in each other's network and you'll be alerted with an email.
+  </p>
+  <p>
+    <b>Email:</b>
+    <%=h @invitation.email %>
+  </p>
+  
+  
+  <%= link_to 'Back', invitations_url %>
 
-<p>
-  <b>Email:</b>
-  <%=h @invitation.email %>
-</p>
-
-
-<%= link_to 'Back', user_url(current_user) %>
+</div>

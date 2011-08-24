@@ -1,20 +1,21 @@
 <div class="middle">
   <div class="limiter">
 
-  <h2>New invitation</h2>
-  <p>
-  Enter the email address of somebody you would like to invite and send. When the user registers, an email will be sent to you to let you know so you can search for them from your homepage and add them to your network.
-  </p>
-  <% form_for(@invitation) do |f| %>
-
-    <p>
-      <%= f.label :email %><br />
-      <%= f.text_field :email %>
-    </p>
-    <p>
-      <%= f.submit 'Create' %>
-    </p>
-  <% end %>
+    <div class="box">
+      <h2>New invitation</h2>
+      <p>
+      Send an invitation to somebody you would like to network with on SitterCalling. When the user registers you will automatically be connected in each other's network and you'll be alerted with an email.
+      </p>
+      <% form_for(@invitation) do |f| %>
+        <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+        </p>
+        <p>
+          <%= f.submit 'Create' %>
+        </p>
+      <% end %>
+    </div>
 
   <%= link_to 'Back', user_url(current_user) %>
   <%= link_to 'Pending', invitations_url %>
