@@ -7,42 +7,32 @@
           <li>Date: <%= @event.event_date %></li>
           <li>Time:  <%= @event.start_time %> to  <%= @event.end_time %></li>
           <li>Note:  <%= @event.note %></li>
-
         </ul>
         </br></br>
-          <CAPTION><EM>Notified Sitters</EM></CAPTION>
-          <table id="sample" cellspacing="2">
-            <tr class="toprow">
-              <th>Answer</th>
-              <th>Name</th>
-              <th>Note</th>
+        <CAPTION><EM>Notified Sitters</EM></CAPTION>
+        <table id="sample" cellspacing="2">
+          <tr class="toprow">
+            <th>Answer</th>
+            <th>Name</th>
+            <th>Note</th>
+          </tr>
+          <% @event.replies.each do |reply| %>
+            <tr>
+              <td class="data" width="20%"><%=h reply.answer %></td>
+              <td class="data" width="30%"><%=h reply.user.first_name %> <%=h reply.user.last_name %></td>
+              <td class="data" width="50%"><%=h reply.note %></td>
             </tr>
-
-            <% @event.replies.each do |reply| %>
-              <tr>
-                <td class="data" width="20%"><%=h reply.answer %></td>
-                <td class="data" width="30%"><%=h reply.user.first_name %> <%=h reply.user.last_name %></td>
-                <td class="data" width="50%"><%=h reply.note %></td>
-              </tr>
-            <% end %>
-          </table>
-
+          <% end %>
+        </table>
         <br/><br/>
         <%= link_to 'Edit', edit_event_path(@event) %> |
         <%= link_to 'Home', user_url(current_user) %>
       </div>
    	</div>
-     <div class="box secondary">
-       <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
-       <p>Add your sitters to this event...</p>
-     </div>
-
-	 <div class="clear"></div>
-
-	<div class="gradient"></div>
-
-
-
+    <div class="box secondary">
+      <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
+      <p>Add your sitters to this event...</p>
+    </div>
   </div>
 </div>
 

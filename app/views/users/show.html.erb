@@ -3,7 +3,6 @@
     <div class="box first double">
       <h3 id="upcomingEvents"><span class="alt">Your Upcoming Events</span></h3>
       <% @upcoming_events.each do |event| %>
-
         <div class="eventItem">
           <% if event.covered %>
             <%= link_to '', event, :class => 'eventIndicator', :title => 'Event Covered' %>
@@ -26,7 +25,6 @@
           </div>
         </div>
       <% end %>
-      
       <% @upcoming_replies.each do |reply| %>
         <div class="eventItem">
           <% if reply.answer == '<NONE>' %>
@@ -41,8 +39,6 @@
             <% else %>
               <li><%= link_to reply.event.event_date, event_reply_path(reply.event, reply) , :class => 'eventTitle' %></li>
             <% end %>
-
-
             <li>Family: <%=h reply.event.user.full_name %>
             <li>Coverage needed:  <%= reply.event.start_time %> to  <%= reply.event.end_time %></li>
             <li>My reply: <%=h reply.answer %></li>
@@ -50,7 +46,6 @@
           </div>
         </div>
       <% end %>
-
       <div class="eventItem newEvent">
         <a class="eventIndicator" href="#" title="Add New Event"></a>
         <div class="eventDetails">
@@ -59,9 +54,7 @@
           </ul>
         </div>
       </div>
-
     </div>
-
     <div class="box secondary">
       <h3 id="yourNetwork"><span class="alt">Your Network</span></h3>
       <ul>
@@ -73,8 +66,5 @@
         <li><%= link_to '+ Invite', new_invitation_path, :class => 'add' %></li>
       </ul>
     </div>
-
-    <div class="clear"></div>
   </div>
-  <div class="gradient"></div>
 </div>
