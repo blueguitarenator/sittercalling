@@ -31,7 +31,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :event_date, :message => 'is required'
   validates_presence_of :start_time, :message => 'is required'
   validates_presence_of :end_time, :message => 'is required'
-  
+  validates :name, :length   => { :maximum => 50 }
+
   @sitter_name
   
   def sitter_name(status)
