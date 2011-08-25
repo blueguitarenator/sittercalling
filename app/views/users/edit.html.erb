@@ -1,27 +1,17 @@
-
 <div class="middle">
   <div class="limiter">
     <div class="box first double">
-
-	  <h2>Edit My Account</h2>
-
-	  <% form_for @user, :html => {:class => "create"}, :url => user_path do |f| %>
-	    <%= render :partial => "form", :object => f %>
-	    <%= f.submit "Update" %>
-	  <% end %>
-
-	  <br /><%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>
-	  <br /><%= link_to "My Profile", user_path(@user) %>
+  	  <h2>Edit My Account</h2>
+  	  <% form_for @user, :html => {:class => "create"}, :url => user_path do |f| %>
+  	    <%= render :partial => "form", :object => f %>
+  	    <%= f.submit "Update" %>
+  	  <% end %>
+  	  <br /><%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>
+  	  <br /><%= link_to "My Profile", user_path(@user) %>
     </div>
     <div class="box secondary">
       <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
       <p>Your account page is where you can manage your email and password. Passwords are not retrievable on SitterCalling. Only their encrypted form is stored for your safety. </p>
-
     </div>
-    <div class="clear"></div>
-    </div>
-  </div>
-  <div class="gradient"></div>
-
   </div>
 </div>

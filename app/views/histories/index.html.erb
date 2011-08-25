@@ -1,42 +1,36 @@
-    <div class="middle">
-      <div class="limiter">
-        
-          <h3 id="historicEvents"><span class="alt">Event History</span></h3>
-            <% current_user.events.historic_sorted.each do |event| %>
-
-            <div class="eventItem">
-
-              <div class="eventDetails">
-                <ul>
-          <li><%= link_to event.name, event, :class => 'eventTitle' %></li>
-                  <li><%= event.event_date %></li>
-                  <li>Covered from  <%= event.start_time %> to  <%= event.end_time %></li>
-          <% if event.covered %>
-                    <li>Babysitter: <%= event.sitter_name('Yes') %></li>
-          <% elsif event.pending %>
-            <li>Pending: <%= event.sitter_name('<NONE>') %></li>
-          <% else %>
-            <li>Uncovered: </li>
-          <% end %>
-                </ul>
-              </div>
-            </div>
-      <% end %>
-      <% current_user.replies.historic_sorted.each do |reply| %>
-          <div class="eventItem">
-            <div class="eventDetails">
-              <ul>
-        <li><%= link_to reply.event.event_date, event_reply_path(reply.event, reply) , :class => 'eventTitle' %></li>
-        <li>Family: <%=h reply.event.user.full_name %>
-                <li>Coverage needed:  <%= reply.event.start_time %> to  <%= reply.event.end_time %></li>
-        <li>My reply: <%=h reply.answer %></li>
-              </ul>
-            </div>
-          </div>
-      <% end %>
-
-        <div class="clear"></div>
+<div class="middle">
+  <div class="limiter">
+    <h3 id="historicEvents"><span class="alt">Event History</span></h3>
+    <% current_user.events.historic_sorted.each do |event| %>
+      <div class="eventItem">
+        <div class="eventDetails">
+          <ul>
+            <li><%= link_to event.name, event, :class => 'eventTitle' %></li>
+            <li><%= event.event_date %></li>
+            <li>Covered from  <%= event.start_time %> to  <%= event.end_time %></li>
+            <% if event.covered %>
+              <li>Babysitter: <%= event.sitter_name('Yes') %></li>
+            <% elsif event.pending %>
+              <li>Pending: <%= event.sitter_name('<NONE>') %></li>
+            <% else %>
+              <li>Uncovered: </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="gradient"></div>
-    </div>
+    <% end %>
+    <% current_user.replies.historic_sorted.each do |reply| %>
+      <div class="eventItem">
+        <div class="eventDetails">
+          <ul>
+            <li><%= link_to reply.event.event_date, event_reply_path(reply.event, reply) , :class => 'eventTitle' %></li>
+            <li>Family: <%=h reply.event.user.full_name %>
+            <li>Coverage needed:  <%= reply.event.start_time %> to  <%= reply.event.end_time %></li>
+            <li>My reply: <%=h reply.answer %></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 

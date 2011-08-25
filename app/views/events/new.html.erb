@@ -1,57 +1,52 @@
 <div class="middle">
   <div class="limiter">
     <div class="box first double">
-		<strong> New Event </strong>
-		<% form_for @event, :html => {:class => "create"} do |form| %>
-			<table>
-			  <tbody>
-			    <tr>
-			      <td><%= form.label :name %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.text_field :name, :class => "wide" %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.label :event_date %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.text_field :event_date, :class => "wide" %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.label :start_time %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.text_field :start_time, :class => "wide" %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.label :end_time %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.text_field :end_time, :class => "wide" %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.label :note %></td>
-			    </tr>
-			    <tr>
-			      <td><%= form.text_field :note, :class => "wide" %></td>
-			    </tr>
-			  </tbody>
-			</table>	
-		  <p>
-		    <%= form.submit 'Create' %>
-		  </p>
-		<% end %>
-
+		  <strong> New Event </strong>
+		  <% form_for @event, :html => {:class => "create"} do |form| %>
+		  	<table>
+  			  <tbody>
+  			    <tr>
+  			      <td><%= form.label :name %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.text_field :name, :class => "wide" %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.label :event_date %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.text_field :event_date, :class => "wide" %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.label :start_time %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.text_field :start_time, :class => "wide" %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.label :end_time %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.text_field :end_time, :class => "wide" %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.label :note %></td>
+  			    </tr>
+  			    <tr>
+  			      <td><%= form.text_field :note, :class => "wide" %></td>
+  			    </tr>
+  			  </tbody>
+  			</table>	
+  		  <p>
+  		    <%= form.submit 'Create' %>
+  		  </p>
+		  <% end %>
 	  </div>
 	  <div class="box secondary">
-        <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
-        <p>Create a new event and then add a sitter to the event in the edit view. As soon as the sitter is added to the event an email will be sent to the sitter. When the sitter replies, you will receive an email letting you know the answer.</p>
-      </div>
-      <div class="clear"></div>
+      <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
+      <p>Create a new event and then add a sitter to the event in the edit view. As soon as the sitter is added to the event an email will be sent to the sitter. When the sitter replies, you will receive an email letting you know the answer.</p>
     </div>
   </div>
-  <div class="gradient"></div>
-	
-  </div>
 </div>
+	
 

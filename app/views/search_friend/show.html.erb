@@ -1,10 +1,8 @@
 <div class="middle">
   <div class="limiter">
     <h3> Search Results</h3>
-
     <% if @users.length > 0 %>
       <%= @users.length %> users found
-
       <table border="1" cellpadding="5">
         <tr>
         <th>First</th>
@@ -20,16 +18,12 @@
           </tr>
         <% end %>
       </table>
-
       <br />
       <br />
-	
     <% else %>
       No users were returned
     <% end %>
-
 	<br /><%= link_to "My Profile", user_path(@user) %>
-
   </div>
 </div>
 
