@@ -3,7 +3,7 @@ Sittercalling::Application.routes.draw do
   resources :user_sessions
   resources :events, :except => [:index, :delete]
   resources :search_friend, :only => [:new, :index]
-  resources :add_friend, :only => [:update]
+  resources :friendships, :only => [:create, :destroy]
   resources :invitations, :except => [:update]
   resources :histories, :only => [:index]
   

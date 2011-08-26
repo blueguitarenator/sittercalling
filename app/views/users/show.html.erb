@@ -58,8 +58,8 @@
     <div class="box secondary">
       <h3 id="yourNetwork"><span class="alt">Your Network</span></h3>
       <ul>
-        <% @user.friends.each do |friend| %>
-          <li><a href="#" title="View <%=h friend.first_name %> <%=h friend.last_name %> 's Profile"><%=h friend.first_name %> <%=h friend.last_name %></a></li>
+        <% for friendship in @user.friendships %>
+          <li><a href="#" title="View <%=h friendship.friend.first_name %> <%=h friendship.friend.last_name %> 's Profile"><%=h friendship.friend.first_name %> <%=h friendship.friend.last_name %></a></li>
         <% end %>
         <li></li>
         <li><%= link_to '+ Add To Network', new_search_friend_path, :class => 'add'%></li>
