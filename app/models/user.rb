@@ -25,13 +25,17 @@
 class User < ActiveRecord::Base
   acts_as_authentic
   
-  has_and_belongs_to_many :friends,
-                          :class_name => "User",
-                          :join_table => "users_friends",
-                          :foreign_key => "user_id",
-                          :association_foreign_key => "friend_id",
-                          :after_add => :create_reverse_association,
-                          :after_remove => :remove_reverse_association
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  # has_and_belongs_to_many :friends,
+                          # :class_name => "User",
+                          # :join_table => "users_friends",
+                          # :foreign_key => "user_id",
+                          # :association_foreign_key => "friend_id",
+                          # :after_add => :create_reverse_association,
+                          # :after_remove => :remove_reverse_association
   
   #attr_accessible :first_name, :last_name, :email
   has_many :events, :dependent => :destroy
@@ -65,18 +69,18 @@ class User < ActiveRecord::Base
     self.replies
   end
   
-  def add_friend(friend)
-    self.friends << friend unless self.friends.include?(friend) || friend == self
-  end
+  # def add_friend(friend)
+    # self.friends << friend unless self.friends.include?(friend) || friend == self
+  # end
+#   
+  # def accept_friend(friend)
+    # sql = User.sanitize(["UPDATE users_friends SET friends_since = ?, accepted = ? WHERE member_id = ? AND friend_id = ?", Time.now(), 1, self.id, friend].flatten)
+    # self.connection.update(sql, "Accept Friend")
+  # end
   
-  def accept_friend(friend)
-    sql = User.sanitize(["UPDATE users_friends SET friends_since = ?, accepted = ? WHERE member_id = ? AND friend_id = ?", Time.now(), 1, self.id, friend].flatten)
-    self.connection.update(sql, "Accept Friend")
-  end
-  
-  def known_friends
-    self.friends
-  end
+  # def known_friends
+    # self.friends
+  # end
   
   def full_name
     name = first_name + " " + last_name
@@ -87,12 +91,12 @@ class User < ActiveRecord::Base
     BabysitMailer.deliver_password_reset_instructions(self)  
   end
 
-private
-  def create_reverse_association(associated_user)
-    associated_user.known_friends << self unless associated_user.known_friends.include?(self)
-  end
-  def remove_reverse_association(associated_user)
-    associated_user.known_friends.delete(self) if associated_user.known_friends.include?(self)
-  end
+# private
+  # def create_reverse_association(associated_user)
+    # associated_user.known_friends << self unless associated_user.known_friends.include?(self)
+  # end
+  # def remove_reverse_association(associated_user)
+    # associated_user.known_friends.delete(self) if associated_user.known_friends.include?(self)
+  # end
 end
 

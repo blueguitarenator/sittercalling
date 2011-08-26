@@ -20,7 +20,17 @@ class UsersController < ApplicationController
     if (invitation)
       friend = User.find(invitation.user_id)
       if (friend)
-        current_user.add_friend(friend)
+        
+        
+        @friendship = current_user.friendships.build(:friend_id => friend)
+        if @friendship.save
+          flash[:notice] = "Added friend."
+        else
+          flash[:error] = "Unable to add friend."
+        end
+        
+        
+        
         invitation.destroy
         flash[:notice] = "You and User #{friend.first_name} #{friend.last_name} have been linked due to invitation"
       end
