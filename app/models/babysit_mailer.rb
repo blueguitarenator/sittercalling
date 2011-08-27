@@ -37,7 +37,7 @@ class BabysitMailer < ActionMailer::Base
     from       'no-reply@sittercalling.com'
     sent_on    Time.now
     
-    body       :edit_reset_password_url => edit_reset_password_url(user.perishable_token)  
+    body       :reset_password_url => reset_password_url(user.perishable_token)  
   end
 
 end

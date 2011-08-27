@@ -1,0 +1,31 @@
+<div class="middle">
+  <div class="limiter">
+    <div class="box first double">
+      <% form_for :reset_password, reset_password_path do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td><%= f.label :password, "Change password" %></td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :password, :class => "wide" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :password_confirmation %></td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :password_confirmation, :class => "wide" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.submit "Update" %>
+      <% end %>
+
+    </div>
+    <div class="box secondary">
+      <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
+      <p>Reset instructions - Enter your new password here. </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
