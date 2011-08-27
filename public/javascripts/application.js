@@ -4,7 +4,7 @@
 if($) {
   $(document).ready(
     function() {
-      $('#flash').delay(500).fadeIn('normal', function() {
+      $('#notice').delay(500).fadeIn('normal', function() {
         $(this).delay(2500).fadeOut();
       });
       
