@@ -4,14 +4,15 @@
 if($) {
   $(document).ready(
     function() {
-      //alert('jquery loaded');
-      $(function() {
-        $('#test').delay(2000).fadeOut();
-        
-        Date.format = 'yyyy-mm-dd';
-        Date.firstDayOfWeek = 0;
-        $.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
-        $('#event_event_date').datepicker();
+      $('#flash').delay(500).fadeIn('normal', function() {
+        $(this).delay(2500).fadeOut();
       });
-    });
+      
+        
+      Date.format = 'yyyy-mm-dd';
+      Date.firstDayOfWeek = 0;
+      $.datepicker.setDefaults({ dateFormat: 'yy-mm-dd' });
+      $('#event_event_date').datepicker();
+    }
+  );
 }

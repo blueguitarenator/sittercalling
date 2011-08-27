@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     unless current_user
-      redirect_to :login
+      redirect_to :root
     end
   end
     
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       unless current_user
         store_location
         flash[:notice] = "You must be logged in to access this page"
-        redirect_to login_url
+        redirect_to :root
         return false
       end
     end

@@ -1,0 +1,25 @@
+<div class="middle">
+  <div class="limiter">
+    <div class="box first double">
+      <h4>Reset Password</h4>
+      <% form_for :reset_password, :html => {:class => "create"}, :url => reset_password_index_path do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td><%= f.label :email %></td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :email, :class => "wide" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.submit "Submit" %>
+      <% end %>
+    </div>
+    <div class="box secondary">
+      <h3 id="siteFeatures"><span class="alt">Site Features</span></h3>
+      <p>Your password will be reset... </p>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
