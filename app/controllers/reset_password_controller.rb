@@ -13,7 +13,7 @@ class ResetPasswordController < ApplicationController
       @user.deliver_password_reset_instructions!
       flash[:notice] = "Instructions to reset your password have been emailed to you. " +
       "Please check your email."
-      redirect_to :logout
+      redirect_to :root
     else
       flash[:notice] = "No user was found with that email address"
       render :action => :new
@@ -46,7 +46,7 @@ class ResetPasswordController < ApplicationController
       "If you are having issues try copying and pasting the URL " +
       "from your email into your browser or restarting the " +
       "reset password process."
-      redirect_to login_path
+      redirect_to :root
 
     end
   end

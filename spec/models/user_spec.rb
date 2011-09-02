@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    @attr = {:first_name => "Amanda", :last_name => "Barker", :email => "amanda@msn.com", :password => "asdf", :password_confirmation => "asdf"}
+    @attr = {:first_name => "Amanda", 
+             :last_name => "Barker", 
+             :email => "amanda@msn.com", 
+             :password => "asdf", 
+             :password_confirmation => "asdf"}
   end
   
   it "should create a new instance given valid attributes" do
@@ -57,6 +61,13 @@ describe User do
     User.create!(@attr.merge(:email => upcased_email))
     user_with_duplicate_email = User.new(@attr)
     user_with_duplicate_email.should_not be_valid
+  end
+  
+  describe "passwords" do
+    it "should have authlogic password attributes" do
+      User.new(@attr).should respond_to(:password)
+      User.new(@attr).should respond_to(:password_confirmation)
+    end
   end
 end
 

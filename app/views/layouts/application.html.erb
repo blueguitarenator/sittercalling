@@ -11,12 +11,8 @@
   </head>
   <body>
     <% flash.each do |msg| %>
-      <%= content_tag msg, :id => "notice" %>
+      <%= content_tag :div, msg, :id => "notice" %>
     <% end %>
-    <!--
-    <% notice %>
-    <% debug(params) if Rails.env.development? %>
-    -->
     <div class="split dashboard">
       <div class="container">
 	  
@@ -30,6 +26,7 @@
   	    
   	    <div class="gradient"></div>
   	      <%= render("shared/footer")%>
+          <%= debug(params) if Rails.env.development? %>
         </div>
       </div
     </div>

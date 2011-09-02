@@ -31,7 +31,7 @@ class BabysitMailer < ActionMailer::Base
     body       :event => event, :reply => reply
   end
 
-  def password_reset_instructions(user)
+  def reset_password_instructions(user)
     subject    'Password Reset'
     recipients user.email
     from       'no-reply@sittercalling.com'
