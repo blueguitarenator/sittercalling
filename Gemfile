@@ -33,9 +33,11 @@ gem 'capistrano'
 # end
 
 group :test, :development do
+  gem 'cucumber-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'annotate'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
