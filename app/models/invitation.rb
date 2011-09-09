@@ -2,7 +2,7 @@ class Invitation < ActiveRecord::Base
   belongs_to :user
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true,
-                  :format   => { :with => email_regex }
+            :format   => { :with => email_regex }
 
 end
 

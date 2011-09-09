@@ -12,7 +12,8 @@ module NavigationHelpers
       '/' 
     when /^signup$/
       '/signup'
-
+    when /the user page for "([^\"]*)"/ 
+      user_path(User.find_by_email!($1))
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
