@@ -1,12 +1,12 @@
 class ResetPasswordController < ApplicationController
-  before_filter :require_no_user, :only => [:edit, :update]
+  before_filter :require_no_user, :only => [:new, :create]
   before_filter :load_user_using_perishable_token, :only => [:edit, :update]
-  def edit
+ 
+
+  def new
     render
   end
 
-  # POST /reset_password
-  # POST /reset_password
   def create
     @user = User.find_by_email(params[:reset_password][:email])
     if @user
@@ -19,20 +19,19 @@ class ResetPasswordController < ApplicationController
       render :action => :new
     end
   end
-
-  # GET /reset_password/new
-  # GET /reset_password/new.xml
-  def new
+ 
+  def edit
     render
   end
 
   def update
-    @user.password = params[:reset_password][:password]
-    @user.password_confirmation = params[:reset_password][:password_confirmation]
-    if @user.save
+    if @user.update_attributes(params[:user])
+      puts "SAVED"
       flash[:notice] = "Password successfully updated"
-      redirect_to user_path(@user)
+      redirect_to :root
     else
+      puts "SHIT"
+      flash[:notice] = "Unable to update password."
       render :action => :edit
     end
   end

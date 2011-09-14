@@ -6,7 +6,7 @@ Sittercalling::Application.routes.draw do
   resources :friendships, :only => [:create, :destroy]
   resources :invitations, :except => [:update]
   resources :histories, :only => [:index]
-  resources :reset_password, :controller => "reset_password", :only => [:new, :update, :create]
+  resources :reset_password, :controller => "reset_password", :only => [:new, :edit, :update, :create]
 
   root :to => 'pages#home'
   
