@@ -1,7 +1,7 @@
 <div class="middle">
   <div class="limiter">
     <div class="box first double">
-      <% form_for :reset_password, reset_password_path do |f| %>
+      <% form_for @user, :url => {:controller => 'reset_password', :action => 'update'}, :html => {:class => 'create'} do |f| %>
       <table>
         <tbody>
           <tr>
